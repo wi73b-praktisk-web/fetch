@@ -15,7 +15,12 @@
     <script>
         fetch('https://swapi.co/api/people/')
             .then((response) => {
-                return response.json();
+                if (response.status == 200){
+                    return response.json();
+                }
+                else {
+                    throw new Error('lad os sige noget gik galt!');
+                }
 
             })
             .then((json) => {
@@ -37,7 +42,10 @@
                     <p> fødselsår ${fodselsar} </p>`
 
                 });
+            }).catch((error) => {
+                console.log(error);
             })
+            // .catch virker kun hvis man også har fået en if og else med i den første then.
     </script>
 
 
