@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="udskrift">Vi veeenteeer....</div>
+
+
+    <script>
+        fetch('https://swapi.co/api/people/')
+            .then((response) => {
+                return response.json();
+
+            })
+            .then((json) => {
+                var udskrift = document.getElementById('udskrift');/*her har jeg hentet diven så jeg kan bruge den i mit scipt*/
+                udskrift.innerHTML = ""; /*her ryder vi diven*/
+                //navn.innerHTML = '<h1>' + json.results[0].name +" "+ json.results[0].height + '</h1>';
+                //var navn = json.results[0].name;
+                //var hojde = json.results[0].height;
+                //var fodselsar = json.results[0].birth_year;
+                // udskrift.innerHTML = `<h1>${navn}</h1> <p> Højde: ${hojde} cm. </p> <p> fødselsår ${fodselsar} </p>`
+
+                json.results.forEach(function (enPerson) {
+                    var navn = enPerson.name;
+                    var hojde = enPerson.height;
+                    var fodselsar = enPerson.birth_year;
+                    //console.log (enPerson); 
+                    udskrift.innerHTML += `<h1>${navn}</h1> 
+                    <p> Højde: ${hojde} cm. </p> 
+                    <p> fødselsår ${fodselsar} </p>`
+
+                });
+            })
+    </script>
+
+
+</body>
+
+</html>
